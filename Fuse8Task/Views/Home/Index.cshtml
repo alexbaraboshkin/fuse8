@@ -1,0 +1,18 @@
+﻿@using Fuse8Task.Models;
+@model EmailDateViewModel
+
+@{
+    ViewBag.Title = "Данные для формирования отчета в Excel";
+    Layout = "~/Views/Shared/_LayoutWithJQuery.cshtml";
+}
+
+<h2>Данные для формирования отчета в Excel</h2>
+@using (Html.BeginForm("Report", "Home", FormMethod.Post))
+{   
+    <div class="editor-field">
+        <p>@Html.EditorFor(model => model.emailForSendReport)   введите email</p>          
+        <p>@Html.EditorFor(model => model.datepicker)   введите начальную дату</p>   
+        <p>@Html.EditorFor(model => model.datepicker1)   введите конечную дату</p>  
+        <p><input type="submit" value="Отправить" /></p>
+    </div>
+}

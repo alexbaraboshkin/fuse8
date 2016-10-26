@@ -1,0 +1,66 @@
+﻿@using Fuse8Task.Models;
+@model IEnumerable<MyViewModel>
+
+@{
+    ViewBag.Title = "Report";
+}
+
+
+
+
+
+<style type="text/css">
+    table {
+        border-collapse: collapse; /* Отображать двойные линии как одинарные */
+    }
+
+    th {
+        background: #ccc; /* Цвет фона */
+        text-align: left; /* Выравнивание по левому краю */
+    }
+
+    td, th {
+        border: 1px solid #800; /* Параметры границы */
+        padding: 4px; /* Поля в ячейках */
+    }
+</style>
+
+<h2>Excel-файл с копией отчёта отправлен на email @ViewBag.emailForSendReport</h2>
+
+<table>
+    <thead><tr><td>OderID</td><td>OrderDate</td><td>ProductId</td><td>Quantity</td><td>UnitPrice</td><td>Cost</td></tr></thead>
+    @foreach (MyViewModel vm in Model)
+    {
+
+        <tr>
+            <td>
+                @vm.OderID.ToString()
+            </td>
+            <td>
+                @vm.OrderDate.ToString()
+            </td>
+            <td>
+
+                @vm.ProductId
+
+            </td>
+            <td>
+
+                @vm.Quantity
+
+            </td>
+            <td>
+
+                @vm.UnitPrice
+
+            </td>
+            <td>
+
+                @(vm.Quantity * vm.UnitPrice)
+
+            </td>
+        </tr>
+
+    }
+</table>
+
